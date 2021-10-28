@@ -50,7 +50,9 @@ export default function Admin() {
 
   const normalizeRequestBody = (task) => {
     const copy = { ...task };
-    copy.tags = copy.tags.filter((tag) => tag.toString().trim() !== "");
+    if (Array.isArray(copy.tags)) {
+      copy.tags = copy.tags.filter((tag) => tag.toString().trim() !== "");
+    }
     return copy;
   };
 
