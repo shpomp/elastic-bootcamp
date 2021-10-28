@@ -49,10 +49,10 @@ export default function Admin() {
   };
 
   const normalizeRequestBody = (task) => {
-    const copy = { ...task }
-    copy.tags = copy.tags.filter(tag => tag.toString().trim() !== "")
+    const copy = { ...task };
+    copy.tags = copy.tags.filter((tag) => tag.toString().trim() !== "");
     return copy;
-  }
+  };
 
   const existingTaskOnSubmit = (taskId) => {
     const editingTask = editingTasks[taskId];
@@ -170,7 +170,12 @@ function EditTask({ task, buttonText = "Save", onChange, onSubmit }) {
               type="text"
               key={tagIndex}
               value={tag}
-              style={{ width: "100px", fontSize: "12px", marginRight: "4px", borderRadius: "12px" }}
+              style={{
+                width: "100px",
+                fontSize: "12px",
+                marginRight: "4px",
+                borderRadius: "12px",
+              }}
               onChange={(e) => {
                 let newTags = [];
 
