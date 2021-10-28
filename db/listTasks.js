@@ -1,7 +1,12 @@
 import knex from "./knex";
+// import appSearch from "./appSearch";
 
 export async function listAllTasks() {
   const tasksQuery = knex.select("*").from("tasks").orderBy("id", "desc");
+
+  // const engines = await appSearch.listEngines();
+  // console.log("engines", engines);
+
   return await listTasks(tasksQuery);
 }
 
