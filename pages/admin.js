@@ -75,6 +75,26 @@ export default function Admin() {
     postTask().then();
   };
 
+  const onCompletedChange = (taskId, value) => {
+    const postTask = async () => {
+      /*
+      const res = await fetch(`/api/tasks/${taskId}`, {
+        method: "PUT",
+        body: JSON.stringify({ completed: value }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (res.status === 200) {
+        await refreshTasks();
+      }
+      */
+    };
+
+    postTask().then();
+  };
+
   return (
     <div>
       <h1>Tasks</h1>
@@ -109,6 +129,9 @@ export default function Admin() {
                   buttonText="Edit"
                   onChange={() => {}}
                   onSubmit={() => startEditing(task.id, { ...task })}
+                  onCompletedChange={(value) =>
+                    onCompletedChange(task.id, value)
+                  }
                 />
               )}
             </li>
@@ -119,8 +142,14 @@ export default function Admin() {
   );
 }
 
-function EditTask({ task, buttonText = "Save", onChange, onSubmit }) {
-  const { title, assignee, points, tags } = task;
+function EditTask({
+  task,
+  buttonText = "Save",
+  onChange,
+  onCompletedChange,
+  onSubmit,
+}) {
+  const { title, assignee, completed, points, tags } = task;
 
   let allTags = [];
   if (Array.isArray(tags)) {
@@ -134,6 +163,16 @@ function EditTask({ task, buttonText = "Save", onChange, onSubmit }) {
   return (
     <>
       <div>
+        {"id" in task && (
+          <>
+            <input
+              type="checkbox"
+              checked={!!completed}
+              disabled={!onCompletedChange}
+              onChange={(e) => onCompletedChange(e.target.checked)}
+            />{" "}
+          </>
+        )}
         <input
           type="text"
           placeholder="Task"
