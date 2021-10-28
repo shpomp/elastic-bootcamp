@@ -1,5 +1,5 @@
 {
-  "name": "blog-search",
+  "name": "task-search",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "knex": "^0.95.11",
     "next": "12.0.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {
     "eslint": "7.32.0",
