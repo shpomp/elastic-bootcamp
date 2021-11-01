@@ -79,7 +79,6 @@ export default function Admin() {
 
   const onCompletedChange = (taskId, value) => {
     const postTask = async () => {
-      /*
       const res = await fetch(`/api/tasks/${taskId}`, {
         method: "PUT",
         body: JSON.stringify({ completed: value }),
@@ -91,7 +90,6 @@ export default function Admin() {
       if (res.status === 200) {
         await refreshTasks();
       }
-      */
     };
 
     postTask().then();
